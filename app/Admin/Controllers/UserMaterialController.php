@@ -28,7 +28,6 @@ class UserMaterialController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('user_name', __('User Name'));
-        $grid->column('name', __('Generate Name'));
         $grid->column('user_id', __('Generate Count'));
 
         return $grid;
@@ -46,7 +45,6 @@ class UserMaterialController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('user_name', __('User Name'));
-        $show->field('name', __('Generate Name'));
         $show->field('user_id', __('Generate Count'));
 
         return $show;
@@ -62,7 +60,6 @@ class UserMaterialController extends AdminController
         $form = new Form(new UserMaterial());
 
         $form->text('user_name', __('User Name'));
-        $form->text('name', __('Generate Name'));
         $form->number('user_id', __('Generate Count'));
 
         return $form;

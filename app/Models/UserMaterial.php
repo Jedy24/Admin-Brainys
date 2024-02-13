@@ -13,7 +13,6 @@ class UserMaterial extends Model
     protected $fillable = [
         'id',
         'user_name',
-        'name',
         'user_id',
     ];
 }
