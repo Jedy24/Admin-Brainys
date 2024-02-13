@@ -9,6 +9,7 @@ class UserBrainys extends Model
     protected $table = 'user-brainys';
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'profession',

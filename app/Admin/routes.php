@@ -13,4 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('user-brainys', UserBrainysController::class);
+    $router->resource('user-materials', UserMaterialController::class);
 });
