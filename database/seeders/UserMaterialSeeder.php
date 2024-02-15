@@ -13,6 +13,8 @@ class UserMaterialSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('user_material')->truncate();
+
         // Mengambil seluruh data dari table users
         $users = DB::connection('be_brainy')->table('users')->get();
 

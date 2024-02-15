@@ -14,6 +14,8 @@ class UserBrainysSeeder extends Seeder
      */
     public function run(): void
     {
+        UserBrainys::truncate();
+
         $users = DB::connection('be_brainy')->table('users')->get();
 
         foreach ($users as $user) {
