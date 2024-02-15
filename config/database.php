@@ -63,32 +63,32 @@ return [
             ]) : [],
         ],
 
-        'be_brainy' => [
-            'driver' => 'mysql',
-            'host' => env('BRAINYS_DB_HOST', 'localhost'),
-            'port' => env('BRAINYS_DB_PORT', '3306'),
-            'database' => env('BRAINYS_DB_DATABASE', 'intern224_be_brainy'),
-            'username' => env('BRAINYS_DB_USERNAME', 'be_brainy'),
-            'password' => env('BRAINYS_DB_PASSWORD', ''),
-        ],
-
         // 'be_brainy' => [
         //     'driver' => 'mysql',
-        //     'host' => env('BRAINYS_DB_HOST', '127.0.0.1'),
+        //     'host' => env('BRAINYS_DB_HOST', 'localhost'),
         //     'port' => env('BRAINYS_DB_PORT', '3306'),
-        //     'database' => env('BRAINYS_DB_DATABASE', 'brainys-admin'),
-        //     'username' => env('BRAINYS_DB_USERNAME', 'root'),
+        //     'database' => env('BRAINYS_DB_DATABASE', 'intern224_be_brainy'),
+        //     'username' => env('BRAINYS_DB_USERNAME', 'be_brainy'),
         //     'password' => env('BRAINYS_DB_PASSWORD', ''),
-        //     'unix_socket' => env('DB_SOCKET', ''),
-        //     'charset' => 'utf8mb4',
-        //     'collation' => 'utf8mb4_unicode_ci',
-        //     'prefix' => '',
-        //     'strict' => true,
-        //     'engine' => null,
-        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
-        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-        //     ]) : [],
         // ],
+
+        'be_brainy' => [
+            'driver' => 'mysql',
+            'host' => env('BRAINYS_DB_HOST', '127.0.0.1'),
+            'port' => env('BRAINYS_DB_PORT', '3306'),
+            'database' => env('BRAINYS_DB_DATABASE', 'brainys-admin'),
+            'username' => env('BRAINYS_DB_USERNAME', 'root'),
+            'password' => env('BRAINYS_DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
