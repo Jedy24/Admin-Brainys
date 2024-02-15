@@ -22,8 +22,6 @@ class UserBrainysSeeder extends Seeder
                 'email' => $user->email,
                 'profession' => $user->profession,
                 'school_name' => $user->school_name,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
             ]);
         }
     }

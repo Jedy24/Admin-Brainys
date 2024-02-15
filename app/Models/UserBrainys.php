@@ -14,7 +14,5 @@ class UserBrainys extends Model
         'email',
         'profession',
         'school_name',
-        'created_at',
-        'updated_at'
     ];
 }

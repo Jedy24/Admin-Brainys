@@ -31,8 +31,6 @@ class UserBrainysController extends AdminController
         $grid->column('email', __('Email'));
         $grid->column('profession', __('Profession'));
         $grid->column('school_name', __('School name'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -52,8 +50,6 @@ class UserBrainysController extends AdminController
         $show->field('email', __('Email'));
         $show->field('profession', __('Profession'));
         $show->field('school_name', __('School name'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
