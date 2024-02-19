@@ -8,6 +8,8 @@ class UserBrainys extends Model
 {
     protected $table = 'user-brainys';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
         'name',

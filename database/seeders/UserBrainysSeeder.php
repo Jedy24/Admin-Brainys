@@ -14,10 +14,16 @@ class UserBrainysSeeder extends Seeder
      */
     public function run(): void
     {
+        // Hapus semua data dari tabel UserBrainys sebelum penyemaian
         UserBrainys::truncate();
 
-        $users = DB::connection('be_brainy')->table('users')->get();
+        // Mengambil data dari tabel users dan mengurutkannya secara descending berdasarkan ID
+        $users = DB::connection('be_brainy')
+            ->table('users')
+            ->orderBy('id', 'desc')
+            ->get();
 
+        // Menyemaikan data ke tabel UserBrainys
         foreach ($users as $user) {
             UserBrainys::create([
                 'name' => $user->name,
