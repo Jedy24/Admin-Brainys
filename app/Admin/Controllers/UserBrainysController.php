@@ -7,6 +7,8 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\UserBrainys;
+use Illuminate\Database\Seeder;
+use DB;
 
 class UserBrainysController extends AdminController
 {
@@ -24,15 +26,18 @@ class UserBrainysController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new UserBrainys());
+        return new Grid(new UserBrainys(), function (Grid $grid) {
+            $grid->column('id', __('Id'));
+            $grid->column('name', __('Name'));
+            $grid->column('email', __('Email'));
+            $grid->column('profession', __('Profession'));
+            $grid->column('school_name', __('School name'));
 
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('email', __('Email'));
-        $grid->column('profession', __('Profession'));
-        $grid->column('school_name', __('School name'));
-
-        return $grid;
+            // Add your custom button next to the filter button
+            $grid->tools(function (Grid\Tools $tools) {
+                $tools->append('<a href="' . route('admin.user-brainys.seed') . '" class="btn btn-sm btn-success">Insert Data</a>');
+            });
+        });
     }
 
     /**
@@ -69,5 +74,15 @@ class UserBrainysController extends AdminController
         $form->text('school_name', __('School name'));
 
         return $form;
+    }
+
+    public function seed()
+    {
+        $seeder = new \Database\Seeders\UserBrainysSeeder();
+        $seeder->run();
+
+        admin_success('Seeder executed successfully');
+
+        return redirect(route('admin.user-brainys.index'));
     }
 }
