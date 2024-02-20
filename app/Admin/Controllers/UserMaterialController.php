@@ -71,7 +71,7 @@ class UserMaterialController extends AdminController
 
     public function seed()
     {
-        // Run the UserMaterialSeeder logic
+        // Seeding dengan mengambil method pada UserMaterialSeeder.php
         $seeder = new \Database\Seeders\UserMaterialSeeder();
         $seeder->run();
 

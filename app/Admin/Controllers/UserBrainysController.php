@@ -78,6 +78,7 @@ class UserBrainysController extends AdminController
 
     public function seed()
     {
+        // Seeding dengan mengambil method pada UserBrainysSeeder.php
         $seeder = new \Database\Seeders\UserBrainysSeeder();
         $seeder->run();
 
