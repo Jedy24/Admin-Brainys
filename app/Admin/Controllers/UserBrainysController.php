@@ -6,9 +6,10 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\UserBrainys;
+use App\Models\UserBrainys;
 use Illuminate\Database\Seeder;
 use DB;
+use Illuminate\Support\Facades\Http;
 
 class UserBrainysController extends AdminController
 {
@@ -33,9 +34,12 @@ class UserBrainysController extends AdminController
             $grid->column('profession', __('Profession'));
             $grid->column('school_name', __('School name'));
 
-            // Add your custom button next to the filter button
             $grid->tools(function (Grid\Tools $tools) {
-                $tools->append('<a href="' . route('admin.user-brainys.seed') . '" class="btn btn-sm btn-success">Insert Data</a>');
+                $tools->append('<a href="' . route('admin.user-brainys.seed') . '" class="btn btn-sm btn-success">Refresh Data</a>');
+            });
+
+            $grid->column('actions', __('Actions'))->display(function () {
+                return '<a href="' . route('admin.user-brainys.forgot-password', ['user_id' => $this->id]) . '" class="btn btn-sm btn-success">Forgot Password</a>';
             });
         });
     }
@@ -85,5 +89,32 @@ class UserBrainysController extends AdminController
         admin_success('Seeder executed successfully');
 
         return redirect(route('admin.user-brainys.index'));
+    }
+
+    public function forgotPassword($user_id)
+    {
+        try {
+            // Consume API
+            $apiUrl = 'https://be.brainys.oasys.id/api/forgot-password';
+
+            // Memanggil API dengan data email user yang akan dikirim mail notificationnya
+            $response = Http::post($apiUrl, [
+                'email' => UserBrainys::find($user_id)->email,
+            ]);
+
+            // Handle response dari API
+            $responseData = $response->json();
+
+            if ($response->successful() && $responseData['status'] === 'success') {
+                admin_success('Reset password email berhasil dikirim');
+            } else {
+                admin_error('Failed to reset password email');
+            }
+
+            // Redirect ke halaman index user-brainys
+            return redirect(route('admin.user-brainys.index'));
+        } catch (\Exception $e) {
+            admin_error('Error: ' . $e->getMessage());
+        }
     }
 }
