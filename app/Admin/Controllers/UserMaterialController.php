@@ -6,7 +6,7 @@ use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\UserMaterial;
+use App\Models\UserMaterial;
 use Illuminate\Database\Seeder;
 use DB;
 
@@ -32,7 +32,7 @@ class UserMaterialController extends AdminController
             $grid->column('user_id', __('Generate Count'));
 
             $grid->tools(function (Grid\Tools $tools) {
-                $tools->append('<a href="' . route('admin.user-materials.seed') . '" class="btn btn-sm btn-success">Insert Data</a>');
+                $tools->append('<a href="' . route('admin.user-materials.seed') . '" class="btn btn-sm btn-success">Refresh Data</a>');
             });
         });
     }
