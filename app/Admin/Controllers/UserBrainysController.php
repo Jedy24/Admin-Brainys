@@ -97,24 +97,34 @@ class UserBrainysController extends AdminController
             // Consume API
             $apiUrl = 'https://be.brainys.oasys.id/api/forgot-password';
 
+            // Mendapatkan email user
+            $userEmail = UserBrainys::find($user_id)->email;
+
             // Memanggil API dengan data email user yang akan dikirim mail notificationnya
             $response = Http::post($apiUrl, [
-                'email' => UserBrainys::find($user_id)->email,
+                'email' => $userEmail,
             ]);
 
             // Handle response dari API
             $responseData = $response->json();
 
             if ($response->successful() && $responseData['status'] === 'success') {
-                admin_success('Reset password email berhasil dikirim');
+                // Menampilkan konfirmasi menggunakan JavaScript dengan menyertakan email
+                echo '<script>';
+                echo 'var confirmed = confirm("Reset password email berhasil dikirim ke ' . $userEmail . '.");';
+                echo 'if (confirmed) { window.location.href = "' . route('admin.user-brainys.index') . '"; }';
+                echo '</script>';
             } else {
-                admin_error('Failed to reset password email');
+                // Menampilkan pesan error menggunakan JavaScript
+                echo '<script>';
+                echo 'alert("Failed to reset password email");';
+                echo '</script>';
             }
-
-            // Redirect ke halaman index user-brainys
-            return redirect(route('admin.user-brainys.index'));
         } catch (\Exception $e) {
-            admin_error('Error: ' . $e->getMessage());
+            // Menampilkan pesan error menggunakan JavaScript
+            echo '<script>';
+            echo 'alert("Error: ' . $e->getMessage() . '");';
+            echo '</script>';
         }
     }
 }
