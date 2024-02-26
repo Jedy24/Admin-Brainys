@@ -1,5 +1,7 @@
 <?php
 
+Use OpenAdmin\Admin\Admin;
+
 /**
  * Open-admin - admin builder based on Laravel.
  * @author z-song <https://github.com/z-song>
@@ -19,3 +21,6 @@
  */
 
 OpenAdmin\Admin\Form::forget(['editor']);
+
+Admin::favicon(asset('images/brainys.png'));
+
