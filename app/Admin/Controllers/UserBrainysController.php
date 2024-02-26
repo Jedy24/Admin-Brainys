@@ -39,7 +39,7 @@ class UserBrainysController extends AdminController
             });
 
             $grid->column('actions', __('Actions'))->display(function () {
-                return '<a href="' . route('admin.user-brainys.forgot-password', ['user_id' => $this->id]) . '" class="btn btn-sm btn-success">Forgot Password</a>';
+                return '<a href="' . route('admin.user-brainys.forgot-password', ['user_id' => $this->id]) . '" class="btn btn-sm btn-success">Reset Password</a>';
             });
         });
     }
