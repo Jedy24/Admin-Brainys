@@ -5,6 +5,7 @@ use App\Admin\Controllers\UserBrainysController;
 use App\Admin\Controllers\UserMaterialController;
 use App\Admin\Controllers\UserSyllabusController;
 use App\Admin\Controllers\UserExerciseController;
+use App\Admin\Controllers\UpdateMessageController;
 
 Admin::routes();
 
@@ -25,5 +26,6 @@ Route::group([
     $router->resource('user-materials', UserMaterialController::class);
     $router->resource('user-syllabi', UserSyllabusController::class);
     $router->resource('user-exercises', UserExerciseController::class);
+    $router->resource('update-messages', UpdateMessageController::class);
 });
 
