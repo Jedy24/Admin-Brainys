@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\UserBrainysController;
+use App\Admin\Controllers\UpdateMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('user-brainys/forgot-password/{user_id}', [UserBrainysController::class, 'forgotPassword'])->name('admin.user-brainys.forgot-password');
+Route::get('update-messages/send-updates', [UpdateMessageController::class, 'sendUpdates'])->name('admin.update-messages.send-updates');
