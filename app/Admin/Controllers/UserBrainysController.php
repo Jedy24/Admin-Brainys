@@ -28,7 +28,7 @@ class UserBrainysController extends AdminController
     protected function grid()
     {
         return new Grid(new UserBrainys(), function (Grid $grid) {
-            $grid->column('id', __('Id'));
+            $grid->column('id', __('Id'))->sortable();
             $grid->column('name', __('Name'));
             $grid->column('email', __('Email'));
             $grid->column('profession', __('Profession'));
